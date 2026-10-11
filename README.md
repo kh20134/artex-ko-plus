@@ -8,6 +8,179 @@
 
 </div>
 
+## 출처 및 라이선스
+
+이 절은 2026-10-11 에 저장소 파일, `git` 이력, GitHub API 로 대조한 사실만 적음. 확인하지 못한 내용은 확인하지 못했다고 표시함.
+
+### 상위 체인
+
+| 순서 | 저장소 | 확인한 관계 |
+|---|---|---|
+| 1 | [Autumn-27/ARTEX](https://github.com/Autumn-27/ARTEX) | 원본 프로그램. 모듈 경로는 `github.com/Autumn-27/artex` |
+| 2 | [jiwoochris/artex-ko](https://github.com/jiwoochris/artex-ko) | 한국어 현지화. GitHub 상의 부모는 아니고, 코드·문서가 출처로 가리킴 |
+| 3 | [bdg9412/artex-ko-plus](https://github.com/bdg9412/artex-ko-plus) | 이 포크의 GitHub 부모. 침해사고 대응 층을 추가 |
+| 4 | [kh20134/artex-ko-plus](https://github.com/kh20134/artex-ko-plus) | 현재 포크. 2026-10-11 생성, 부모는 bdg9412/artex-ko-plus |
+
+라이선스 전문은 [LICENSE](LICENSE) 임. SPDX 식별자는 AGPL-3.0 이고, 파일은 고치지 않음. 고지 모음은 [NOTICE](NOTICE), 이 포크의 문서 변경은 [CHANGES.md](CHANGES.md) 임.
+
+### Autumn-27/ARTEX
+
+- `go.mod` 의 모듈 경로가 `github.com/Autumn-27/artex` 이고, 에이전트 SDK 가 `github.com/Autumn-27/norma v0.4.3` 임.
+- 2026-10-11 `gh repo view Autumn-27/ARTEX` 는 저장소를 찾지 못함. 원본 원격의 파일 트리는 그날 다시 읽지 못함.
+- `jiwoochris/artex-ko` 이력에 커밋 `d0033724a63aefbbcc1ed022b0faf4dc4a1fce51` 이 있음. 작성자 Autumn, 2026-10-03, 메시지 `Merge pull request #189 from Autumn-27/fix/sse-same-origin`.
+- 상속된 실행 구조는 단일 Go 프로세스, 내장 Next.js, PostgreSQL, 목표·계획·작업 에이전트, 기록 프록시, 도구 승인 훅임. 이 트리에서 `cmd/artex/main.go`, `server/engine.go`, `traffic/traffic.go`, `guard/guard.go` 는 아래 한국어 스냅샷과 블롭이 같음.
+- 중국어 변경 이력은 [CHANGELOG.zh.md](CHANGELOG.zh.md), 중국어 설명은 [README.zh.md](README.zh.md) 에 보존됨. 두 파일도 아래 스냅샷과 블롭이 같음. README.zh.md 머리말에는 한국어판 경고가 이미 들어 있으므로, 그 파일 전체를 원본 원격의 무수정 사본이라고 보지 않음.
+
+### jiwoochris/artex-ko
+
+- [docs/local-development.md](docs/local-development.md) 가 기준 커밋 `ee978f84f7a82ba87bbd04b33b766395559bf6cd`(2026-10-09)와 `867ea55c2690cdbc4cff8230325613d97b398bf7`(2026-10-08)를 적음. 두 커밋 모두 해당 저장소 `main` 이력에 있음.
+- `ee978f84` 와 이 트리의 블롭이 같은 파일: `LICENSE`, `go.mod`, `agent/prompt.go`, `guard/guard.go`, `cmd/artex/main.go`, `server/engine.go`, `traffic/traffic.go`, `README.zh.md`, `CHANGELOG.zh.md`, `detections/sigma/README.ko.md`.
+- `agent/prompt.go` 의 `langDirective` 주석이 사용자에게 보이는 산출물 언어 꼬리를 artex-ko 현지화로 표시함. 내부 추론 본문은 그 방침대로 원문 유지임.
+- 같은 커밋의 트리에 `closedloop/`, `investigation/`, `defenseeval/`, `securitysource/`, `lab/` 는 없음. 한국어 UI, 방어 문서, `detections/` 는 그 트리에 있음.
+- `detections/attack/artex_navigator_layer.json` 이 `https://github.com/jiwoochris/artex-ko` 를 가리킴.
+- 그 스냅샷에는 `.github/workflows` 가 있음. 이 트리에는 그 워크플로 파일이 없음.
+
+### bdg9412/artex-ko-plus
+
+- GitHub 메타데이터: 2026-10-09 생성, `isFork` 거짓, 부모 저장소 없음, 라이선스 AGPL-3.0. 설명은 한국어판에 AI 침해사고 대응을 더한 저장소임.
+- 이 포크가 물려받은 이력은 `8cc40a9`(Initial commit, README 와 `.gitattributes` 만)에서 시작함. jiwoochris 커밋 객체는 이 이력에 없음. 파일은 스냅샷으로 들어옴.
+- 작성자는 bdg9412. 부모가 마지막으로 푸시한 커밋은 `8873bb0e88cd5138bf49ea654191c7ce30998778`(2026-10-11, 사용자 한글 가이드 위치 조정)임.
+- `ee978f84` 에 없고 이 트리에 있는 층: `closedloop`, `investigation`, `defenseeval`, `securitysource`, `lab`, 로컬 Compose(`docker-compose.local.yml`, `Dockerfile.local`), AegisLoop 문서와 증적 이미지, 조사·방어·폐루프용 `server/`·`db/` 파일, `agent/investigator*.go`.
+- 같은 경로인데 내용이 다른 파일은 30개임. 그중 스키마·라우트·화면 쪽은 `db/schema.sql`, `server/server.go`, `web/src/navigation/sidebar/sidebar-items.ts`, `web/src/config/app-config.ts`, `web/messages/ko.json`, `web/messages/zh.json`, `README.md`, `CHANGELOG.md` 임.
+- 화면 이름은 AegisLoop 임. `web/src/config/app-config.ts` 의 한국어 제목은 `AegisLoop: 공격·방어 보안 운영` 임.
+- 추가된 표는 `finding_defense_*`, `finding_investigation*`, `defensive_cases`, `defensive_case_runs`, `closed_loop_iterations`, `closed_loop_live_*`, `security_sources` 임. `db/schema.sql` 에 있음.
+- `ee978f84` 에 있고 이 공개 트리에 없는 항목: `.github/`, `.gitignore`, `.env.example`, `.dockerignore`, `.pre-commit-config.yaml`. 따라서 이 트리에는 부모 저장소 기준의 GitHub Actions 가 없음.
+
+### kh20134/artex-ko-plus 에서 바꾼 것
+
+- 문서와 그림만 추가함. Go, 웹, 스키마, API, 설정 해석, 프롬프트 본문은 부모 커밋 `8873bb0` 과 같음.
+- README 의 이 절과 아래 운영 설명을 추가함.
+- [NOTICE](NOTICE), [CHANGES.md](CHANGES.md), [docs/architecture.svg](docs/architecture.svg), [docs/architecture.png](docs/architecture.png) 를 추가함.
+- 실대상과 API 키 없이 패키지 테스트를 실행한 화면을 [docs/images/offline-package-tests.png](docs/images/offline-package-tests.png) 로 남김.
+
+### AGPL-3.0 에서 지키는 의무
+
+- 이 프로그램과 이를 바탕으로 한 저작물은 AGPL-3.0 을 유지함. [LICENSE](LICENSE) 를 함께 전달함.
+- 기존 저작권·출처 표시를 유지함. 중국어·영어 문서와 소스 주석의 Autumn-27, artex-ko, jiwoochris 표기를 지우지 않음.
+- 수정본에는 수정 사실과 날짜를 눈에 띄게 적음. 이 포크의 날짜는 2026-10-11 임.
+- 수정본을 네트워크로 제공하고 사용자가 그 서버와 원격으로 주고받으면, 그 사용자에게 대응하는 소스 코드를 제공함. 조항은 AGPL-3.0 13절임.
+- 이 포크의 대응 소스는 `https://github.com/kh20134/artex-ko-plus` 임.
+
+## 운영 설명
+
+문체만 개조식으로 정리함. 동작 설명은 현재 소스에 있는 범위임.
+
+### 목적
+
+- 허가된 환경에서 블루팀·침해사고 대응 절차를 한 웹 앱에 모아 둔 도구임.
+- 취약점 진단 기록, 로그 근거, 읽기 전용 AI 조사, 오프라인 규칙 비교를 이어서 볼 수 있음.
+- 기본 실행은 운영 대상, Splunk, 클라우드 실습 서버를 설치하지 않음. [docs/local-development.md](docs/local-development.md).
+
+### 기능 개요
+
+- 통합 현황은 작업·사건·평가 기록 수를 보여 줌. `GET /api/aegis/overview`. 카드 숫자는 탐지 성능 지표가 아님.
+- Offensive 는 기존 ARTEX 진단임. 작업, 자산 그래프, 탐색 그래프, 취약점, 트래픽, 사람 개입 대화가 있음.
+- Defensive 는 취약점 없이 파일 또는 Splunk 로그로 사건을 만듦. `investigation.BuildDefensivePlan` 은 침해를 단정하지 않는 독립 조사 계획임.
+- Closed-loop 는 실제 재검증 루프와 오프라인 로그 규칙 평가를 나란히 둠. 오프라인 엔진은 제공된 라벨 로그의 계수임.
+- 사이드바 묶음은 `web/src/navigation/sidebar/sidebar-items.ts` 의 AegisLoop, Tools, System 임.
+
+### AI 침해사고 대응 기능
+
+- 로그 파싱과 기초 정리는 LLM 없이 수행함. AI 조사는 화면에서 근거를 고른 뒤 시작함.
+- `agent.RunInvestigation` 은 planner 와 worker 세션을 분리함. 그 주석대로 공격 ToolSet 은 만들지 않음.
+- 조사 도구는 `plan_investigation`, `search_evidence`, `read_evidence`, `record_observation` 임.
+- `search_evidence` 의 `remote=true` 일 때만 연결된 Splunk 에 읽기 전용 추가 조회를 함. `securitysource` 는 경보를 만들거나, 호출자가 넣은 SPL 을 실행하거나, 원격 규칙을 바꾸지 않음.
+- 관측은 `observed`, `inferred`, `insufficient_data` 로 나뉨. 조사 완료는 침해 확정이 아님.
+- 예산 함수가 라운드 3, 모델 호출 18, 조회 12, 토큰 180000, 시간 240초를 상한으로 고정함.
+- 선택된 취약점 근거와 로그 발췌는 설정된 LLM 공급자로 나감. 페이지를 열거나 근거만 저장할 때는 모델을 호출하지 않음.
+
+### 구성 요소와 데이터 흐름
+
+아래 그림은 Noto Sans CJK KR 로 렌더한 PNG 임. 벡터 원본은 [docs/architecture.svg](docs/architecture.svg) 임.
+
+![AegisLoop 구성과 신뢰 경계. 로컬 프로세스, 외부 LLM, 허가된 대상, 읽기 전용 로그](docs/architecture.png)
+
+- 운영자 브라우저는 `:8787` 의 JWT 세션으로 API 와 SSE 를 봄.
+- 로컬 신뢰 경계 안에는 UI, API, 진단 엔진, guard, 기록 프록시 `:8788`, 조사 런타임, 오프라인 평가, PostgreSQL 이 있음.
+- 외부 LLM 은 데이터 반출 경계임. 진단과 AI 조사가 맥락을 보냄.
+- 허가된 대상은 비신뢰 네트워크임. worker 의 도구 실행 상대임.
+- 로그 원천은 읽기 전용 경계임. 파일 업로드 또는 저장된 Splunk 검색임.
+- 스키마는 `db/schema.sql` 을 `go:embed` 하고 기동마다 멱등으로 적용함.
+
+### 설치와 실행
+
+- 웹까지 올리는 기본 경로는 Docker Engine 과 Compose v2 에서 `./scripts/local-start.sh` 임.
+- 스크립트는 `.env.local` 의 `POSTGRES_PASSWORD` 와 `.local-runtime/jwt.key` 가 없으면 로컬에서 생성함. API 키는 만들지 않음.
+- 앱은 `http://localhost:8787` , 최초 비밀번호는 `http://localhost:8787/setup/` 임. 포트 8787·8788 은 `127.0.0.1` 에 바인딩됨.
+- 루트 `docker-compose.yml` 과 `install.sh` 는 상류 설치 경로를 보존한 파일임. 이 확장의 기본 명령은 `local-start.sh` 임.
+- DB 와 키가 없는 패키지 확인은 아래임. 2026-10-11 이 문서 작업 환경에서 통과함.
+
+```sh
+go test ./closedloop/ ./defenseeval/ ./investigation/ -count=1
+```
+
+![키와 실대상 없이 실행한 패키지 테스트와 조사 문장](docs/images/offline-package-tests.png)
+
+- 위 화면의 한국어 문장은 `investigation.BuildDefensivePlan` 이 돌려주는 요약임. 웹 서버 화면은 이 환경에 Docker 엔진이 없어 남기지 않음.
+- 통합 테스트 `./scripts/local-test.sh` 는 별도 임시 PostgreSQL 을 씀. 실제 LLM 키와 운영 Splunk 없이 돌리도록 문서화되어 있음.
+
+### 설정
+
+- DB 연결 우선순위는 환경 변수 `ARTEX_PG_DSN`, 그다음 `config.json` 임. 둘 다 없으면 기동이 실패함. `config/config.go`.
+- `config.example.json` 에는 database 와 skill_dir 만 있음. LLM 키 필드는 없음.
+- 문서 예시의 API 키는 환경 변수만 사용함. 값은 저장소, 문서, 화면 캡처에 넣지 않음.
+
+```sh
+export ANTHROPIC_API_KEY='자신의 키'
+export ARTEX_LLM_PROVIDER=anthropic
+export ARTEX_LLM_MODEL='사용할 모델'
+# OpenAI 호환 엔드포인트는 아래를 함께 둠
+# export OPENAI_API_KEY='자신의 키'
+# export ARTEX_LLM_PROVIDER=openai
+# export ARTEX_LLM_BASE_URL='https://공급자/v1'
+```
+
+- `agent.FromEnv` 가 읽는 이름은 `ARTEX_LLM_PROVIDER`, `ARTEX_LLM_MODEL`, `ARTEX_LLM_BASE_URL`, `ARTEX_LLM_PROXY`, `ARTEX_LLM_STREAM`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` 임.
+- 코드는 UI 의 LLM 설정에도 키를 받음. `llm_profiles.api_key` 로 저장하고, `APIKey` 의 JSON 태그가 `json:"-"` 이라 조회 응답에 키를 넣지 않음. 힌트만 `api_key_hint` 로 나감.
+- `docker-compose.local.yml` 은 같은 LLM 환경 변수를 컨테이너로 넘김. 비어 있으면 빈 문자열임.
+- 스킬 디렉터리 우선순위는 `ARTEX_SKILL_DIR`, 설정 파일, 실행 위치의 `skills/` 임.
+- 설정 파일 경로는 `ARTEX_CONFIG` 로 바꿀 수 있음.
+
+### 사용 예
+
+- 관리자 비밀번호를 `/setup/` 에서 만든 뒤, 키를 환경 변수로 두고 허가된 대상만 작업에 등록함.
+- 방어 검증의 파일 경로는 재검증 UUID 와 실행 시간에 연결된 감사·경보 파일을 등록하는 순서임. 형식 상한은 4MiB, 5000행, 종류별 200이벤트임. 절차는 [docs/purple-validation.md](docs/purple-validation.md).
+- 침해 조사는 대상·기간·경로의 근거를 저장한 다음 AI 조사를 시작함. 순서는 [docs/cert-investigation.md](docs/cert-investigation.md) 와 [docs/USER_GUIDE_KO.md](docs/USER_GUIDE_KO.md).
+- 오프라인 비교의 합성 입력은 [docs/examples/aegisloop/](docs/examples/aegisloop/tuning.jsonl) 에 있음. 라벨은 `attack` 와 `benign` 이고, 엔진은 그 파일 안의 필드만 계수함. 실행 순서와 API 는 [docs/aegisloop.md](docs/aegisloop.md).
+
+### 안전과 법적 고지
+
+- 자신이 소유하거나 서면으로 허가받은 대상에서만 사용함.
+- 대한민국에서는 권한 없는 정보통신망 침입이 정보통신망법 위반이 될 수 있고, 개인정보가 걸리면 개인정보 보호법도 적용됨. 기존 고지 전문은 아래 「먼저 읽어 주세요」와 「라이선스와 면책」에 그대로 있음.
+- 진단 도구, 기록 프록시, 인터셉트 규칙은 허가 범위 안의 검증용임. 탐지 자료는 [docs/defense-ko.md](docs/defense-ko.md) 와 [detections/](detections/README.ko.md).
+- 저장소에 공급자 API 키, 운영 DB, JWT 키, 원본 고객 로그를 넣지 않음.
+
+### 한계
+
+- 조사 완료, HTTP 상태 코드, 경보 부재는 침해 성공이나 안전을 확정하지 않음. `investigation` 패키지 제한 문구와 같음.
+- 오프라인 평가는 입력 로그의 TP/FP/TN/FN 계수임. 운영 SIEM 발화, 정책 배포, 전사 오탐률이 아님. `closedloop` 패키지 주석과 같음.
+- 두 번의 재실행만으로 정확도·오탐률·MTTD·MTTR 을 만들지 않음. 상위 README 의 같은 제한을 유지함.
+- 그림자 일치는 감사 로그에서 조건을 계산한 결과임. SIEM 경보가 울렸다는 뜻이 아님.
+- AI 출력 언어는 `langDirective` 로 유도함. 모델에 따라 흔들릴 수 있음. 기존 「모델 선택과 출력 언어」 절의 관찰을 유지함.
+- 원본 원격 Autumn-27/ARTEX 는 2026-10-11 조회에서 열리지 않음. 상류 이미지 `autumn27/artex` 의 배포 가능 여부를 이 저장소가 보장하지 않음.
+- 이 트리에는 GitHub Actions 워크플로가 없음. jiwoochris 스냅샷의 CI 는 부모 공개 트리에 포함되지 않음.
+
+### 자주 묻는 질문
+
+- 키 없이 무엇을 할 수 있는가. 초기 비밀번호 설정, 파일 로그 파싱, 오프라인 패키지 테스트는 키가 없어도 됨. 취약점 진단과 AI 조사는 설정된 LLM 연결이 필요함.
+- 조사 에이전트가 셸이나 공격 도구를 여는가. 조사 세션에 등록된 도구는 계획·검색·원문 확인·관측 기록임. 공격 ToolSet 은 그 세션에 없음.
+- Splunk 가 반드시 필요한가. 파일 업로드 경로가 있음. Splunk 는 저장된 연결이 있을 때의 선택임.
+- 규칙을 회사 SIEM 에 자동으로 넣는가. 오프라인 저장과 실습용 별도 경로는 문서에 구분되어 있음. `closedloop` 평가 자체는 배포를 수행하지 않음.
+- 기본 비밀번호가 있는가. 없음. `/api/auth/init` 으로 관리자 비밀번호를 만듦.
+- 이 포크가 탐지율을 올렸는가. 이 포크의 변경은 문서와 그림임. 동작과 실험 수치는 부모 저장소의 기록 그대로임.
+
+---
+
 [ARTEX](https://github.com/Autumn-27/ARTEX)의 [한국어판 artex-ko](https://github.com/jiwoochris/artex-ko)를 기반으로 확장했습니다. 기존 취약점 점검 기능과 Go·Next.js·PostgreSQL 구조를 유지하면서, 점검 이후의 탐지·차단 확인, 취약점 없이 시작하는 사건 조사와 탐지 규칙 개선 평가를 하나의 웹앱으로 연결합니다. 원본과 한국어판의 저작권 표시 및 [AGPL-3.0 라이선스](LICENSE)를 유지합니다. 기반 프로젝트의 [중국어 문서](README.zh.md)와 [영문 문서](README.en.md)는 참고용으로 보존하며, 이 확장의 실행 방법은 아래 안내를 따릅니다.
 
 - [사용 가이드](docs/USER_GUIDE_KO.md): 진단·방어 검증·침해 조사의 핵심 사용 순서.

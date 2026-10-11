@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="980" viewBox="0 0 1360 980" role="img" aria-labelledby="title desc">
+  <title id="title">AegisLoop 구성과 신뢰 경계</title>
+  <desc id="desc">운영자 브라우저, 로컬 Go·PostgreSQL 신뢰 경계, 외부 LLM, 허가된 대상, 읽기 전용 로그 원천의 데이터 흐름</desc>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Noto Sans CJK", sans-serif; fill: #1f2328; }
+    .title { font-size: 26px; }
+    .sub { font-size: 14px; fill: #57606a; }
+    .zone { font-size: 16px; }
+    .label { font-size: 14px; }
+    .body { font-size: 12.5px; fill: #424a53; }
+    .small { font-size: 11.5px; fill: #57606a; }
+  </style>
+  <rect width="1360" height="980" fill="#f6f8fa"/>
+
+  <text class="title" x="32" y="42">AegisLoop 구성과 신뢰 경계</text>
+  <text class="sub" x="32" y="68">2026-10-11 소스 기준. 기본 수신은 127.0.0.1. 바깥 세 상자는 프로세스 밖의 신뢰 경계임.</text>
+
+  <rect x="300" y="86" width="340" height="58" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+  <text class="label" x="470" y="110" text-anchor="middle">운영자 브라우저</text>
+  <text class="small" x="470" y="130" text-anchor="middle">통합 현황 · Offensive · Defensive · Closed-loop</text>
+  <line x1="470" y1="144" x2="470" y2="176" stroke="#0969da" stroke-width="1.5"/>
+  <polygon points="464,170 476,170 470,180" fill="#0969da"/>
+
+  <rect x="24" y="184" width="900" height="764" rx="16" fill="#f3faf6" stroke="#1a7f37" stroke-width="2" stroke-dasharray="8 5"/>
+  <text class="zone" x="44" y="214">로컬 신뢰 경계</text>
+  <text class="small" x="196" y="214">Go 단일 프로세스와 PostgreSQL. 앱 :8787 · 기록 프록시 :8788</text>
+
+  <rect x="44" y="232" width="276" height="108" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="60" y="258">Next.js UI</text>
+  <text class="body" x="60" y="282">정적 빌드를 go:embed 로 내장</text>
+  <text class="body" x="60" y="302">기본 표시 언어는 한국어</text>
+  <text class="small" x="60" y="322">web/messages/ko.json</text>
+
+  <rect x="336" y="232" width="276" height="108" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="352" y="258">HTTP API :8787</text>
+  <text class="body" x="352" y="282">net/http · JWT 세션 · SSE</text>
+  <text class="body" x="352" y="302">최초 기동은 /setup 비밀번호</text>
+  <text class="small" x="352" y="322">GET /api/health · /api/aegis/overview</text>
+
+  <rect x="628" y="232" width="276" height="108" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="644" y="258">PostgreSQL</text>
+  <text class="body" x="644" y="282">자산 그래프와 탐색 그래프</text>
+  <text class="body" x="644" y="302">조사·방어 검증·폐루프 기록</text>
+  <text class="small" x="644" y="322">ARTEX_PG_DSN 이 설정 파일보다 우선</text>
+
+  <rect x="44" y="356" width="860" height="156" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="60" y="382">진단 엔진 (허가된 작업)</text>
+  <text class="body" x="60" y="406">Manager 가 작업·엔진·store 수명을 다룸. 그래프 변경이 planner 를 깨움.</text>
+  <rect x="60" y="422" width="190" height="68" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text class="body" x="155" y="450" text-anchor="middle">goals</text>
+  <text class="small" x="155" y="470" text-anchor="middle">목표 분해 · 범위</text>
+  <rect x="266" y="422" width="190" height="68" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text class="body" x="361" y="450" text-anchor="middle">planner</text>
+  <text class="small" x="361" y="470" text-anchor="middle">의도 생성</text>
+  <rect x="472" y="422" width="190" height="68" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text class="body" x="567" y="450" text-anchor="middle">worker × N</text>
+  <text class="small" x="567" y="470" text-anchor="middle">의도 하나 실행</text>
+  <rect x="678" y="422" width="190" height="68" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text class="body" x="773" y="450" text-anchor="middle">mainagent</text>
+  <text class="small" x="773" y="470" text-anchor="middle">사람 개입 대화</text>
+
+  <rect x="44" y="528" width="420" height="112" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="60" y="554">guard / intercept</text>
+  <text class="body" x="60" y="578">도구 호출은 PreToolUse 훅을 통과</text>
+  <text class="body" x="60" y="598">승인·차단은 DB 의 가로채기 규칙</text>
+  <text class="small" x="60" y="618">guard/guard.go · intercept 패키지</text>
+
+  <rect x="484" y="528" width="420" height="112" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="500" y="554">기록 프록시 127.0.0.1:8788</text>
+  <text class="body" x="500" y="578">작업 트래픽을 MITM 으로 기록</text>
+  <text class="body" x="500" y="598">빈 주소면 프록시를 끄도록 flag 가 있음</text>
+  <text class="small" x="500" y="618">traffic/traffic.go · -proxy</text>
+
+  <rect x="44" y="656" width="420" height="168" rx="10" fill="#ffffff" stroke="#8250df"/>
+  <text class="label" x="60" y="682">침해 조사 런타임</text>
+  <text class="body" x="60" y="706">planner · worker 세션을 따로 둠</text>
+  <text class="body" x="60" y="726">plan_investigation</text>
+  <text class="body" x="60" y="746">search_evidence · read_evidence</text>
+  <text class="body" x="60" y="766">record_observation</text>
+  <text class="small" x="60" y="796">공격 ToolSet 은 이 세션에 등록하지 않음</text>
+
+  <rect x="484" y="656" width="420" height="168" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <text class="label" x="500" y="682">오프라인 규칙 평가</text>
+  <text class="body" x="500" y="706">closedloop: 개선용·평가용 로그 분리</text>
+  <text class="body" x="500" y="726">defenseeval: 작은 필드 규칙 언어</text>
+  <text class="body" x="500" y="746">네트워크 접속과 명령 실행이 없음</text>
+  <text class="small" x="500" y="796">운영 SIEM 자동 배포 경로가 아님</text>
+
+  <text class="small" x="44" y="860">조사 예산 상한은 코드에서 3회 · 모델 18회 · 조회 12회 · 180000 토큰 · 240초로 고정됨.</text>
+  <text class="small" x="44" y="882">파일 업로드 상한은 4MiB · 행 5000 · 종류별 이벤트 200. Splunk 조회는 설정된 검색만 읽음.</text>
+  <text class="small" x="44" y="904">스키마는 db/schema.sql 을 go:embed 하고, 기동마다 멱등으로 테이블을 만듦.</text>
+  <text class="small" x="44" y="926">llm_profiles.api_key 는 JSON 으로 브라우저에 나가지 않음 (json:&quot;-&quot;).</text>
+
+  <rect x="948" y="184" width="388" height="230" rx="16" fill="#fff8eb" stroke="#bf8700" stroke-width="2" stroke-dasharray="8 5"/>
+  <text class="zone" x="968" y="216">외부 LLM</text>
+  <text class="small" x="968" y="238">데이터 반출 경계</text>
+  <text class="body" x="968" y="268">환경 변수 ANTHROPIC_API_KEY</text>
+  <text class="body" x="968" y="290">또는 OPENAI_API_KEY</text>
+  <text class="body" x="968" y="312">ARTEX_LLM_PROVIDER / MODEL</text>
+  <text class="body" x="968" y="334">ARTEX_LLM_BASE_URL / PROXY</text>
+  <text class="body" x="968" y="364">UI 프로필도 DB 에 키를 저장함</text>
+  <text class="small" x="968" y="390">진단과 AI 조사 시작 때만 맥락 전송</text>
+
+  <line x1="924" y1="300" x2="948" y2="300" stroke="#bf8700" stroke-width="1.5"/>
+  <polygon points="940,294 940,306 948,300" fill="#bf8700"/>
+
+  <rect x="948" y="434" width="388" height="210" rx="16" fill="#fff1f0" stroke="#cf222e" stroke-width="2" stroke-dasharray="8 5"/>
+  <text class="zone" x="968" y="466">허가된 대상</text>
+  <text class="small" x="968" y="488">비신뢰 네트워크</text>
+  <text class="body" x="968" y="518">worker 도구 실행의 상대</text>
+  <text class="body" x="968" y="540">소유했거나 서면 허가를 받은</text>
+  <text class="body" x="968" y="562">범위 안에서만 다룸</text>
+  <text class="small" x="968" y="596">기본 Compose 는 대상 앱을 설치하지 않음</text>
+  <text class="small" x="968" y="618">Juice Shop · Splunk · AWS 는 선택 실습</text>
+
+  <line x1="924" y1="540" x2="948" y2="540" stroke="#cf222e" stroke-width="1.5"/>
+  <polygon points="940,534 940,546 948,540" fill="#cf222e"/>
+
+  <rect x="948" y="664" width="388" height="284" rx="16" fill="#fbf6ff" stroke="#8250df" stroke-width="2" stroke-dasharray="8 5"/>
+  <text class="zone" x="968" y="696">로그 원천</text>
+  <text class="small" x="968" y="718">읽기 전용 경계</text>
+  <text class="body" x="968" y="748">파일: JSON · JSONL · CSV 업로드</text>
+  <text class="body" x="968" y="770">Splunk: 저장된 연결의 검색</text>
+  <text class="body" x="968" y="792">remote=true 일 때만 추가 조회</text>
+  <text class="body" x="968" y="822">경보 생성과 원격 규칙 변경 없음</text>
+  <text class="body" x="968" y="844">호출자가 넣은 SPL 을 실행하지 않음</text>
+  <text class="small" x="968" y="880">securitysource 패키지</text>
+  <text class="small" x="968" y="902">근거 준비만으로 LLM 을 호출하지 않음</text>
+  <text class="small" x="968" y="924">AI 조사는 저장된 근거를 고른 뒤 시작</text>
+
+  <line x1="924" y1="800" x2="948" y2="800" stroke="#8250df" stroke-width="1.5"/>
+  <polygon points="940,794 940,806 948,800" fill="#8250df"/>
+</svg>

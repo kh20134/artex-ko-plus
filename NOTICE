@@ -1,0 +1,54 @@
+AegisLoop / artex-ko-plus
+Copyright and license notices
+
+This tree is licensed under the GNU Affero General Public License, version 3
+(AGPL-3.0). The full license text is the file LICENSE in the repository root.
+That file is the GNU license text itself and is not modified by this fork.
+
+Upstream chain verified for this tree on 2026-10-11:
+
+1. Autumn-27/ARTEX
+   https://github.com/Autumn-27/ARTEX
+   Original program. Go module path github.com/Autumn-27/artex.
+   Agent SDK dependency github.com/Autumn-27/norma v0.4.3 (go.mod).
+   On 2026-10-11 the GitHub repository name did not resolve. Commit
+   d0033724a63aefbbcc1ed022b0faf4dc4a1fce51 (author Autumn, 2026-10-03,
+   merge of Autumn-27/fix/sse-same-origin, pull request #189) is present
+   in the history of jiwoochris/artex-ko.
+
+2. jiwoochris/artex-ko
+   https://github.com/jiwoochris/artex-ko
+   Korean localization incorporated into the parent tree. This repository
+   is not the GitHub parent of bdg9412/artex-ko-plus. Source comments,
+   detection metadata, and docs/local-development.md name it. Blobs of
+   LICENSE, go.mod, agent/prompt.go, guard/guard.go, cmd/artex/main.go,
+   server/engine.go, traffic/traffic.go, README.zh.md, CHANGELOG.zh.md,
+   and detections/sigma/README.ko.md in this tree match
+   jiwoochris/artex-ko commit ee978f84f7a82ba87bbd04b33b766395559bf6cd
+   (2026-10-09).
+
+3. bdg9412/artex-ko-plus
+   https://github.com/bdg9412/artex-ko-plus
+   GitHub parent of this fork (created 2026-10-09, isFork false,
+   AGPL-3.0). Adds the AegisLoop incident-response layer on top of the
+   Korean snapshot. Its published history begins at 8cc40a9 and does not
+   contain the jiwoochris commit objects.
+
+4. kh20134/artex-ko-plus
+   https://github.com/kh20134/artex-ko-plus
+   This fork. GitHub parent is bdg9412/artex-ko-plus. Documentation-only
+   notices, diagram, and README provenance were added on 2026-10-11.
+   Program behavior is unchanged. See CHANGES.md.
+
+AGPL-3.0 obligations that apply to this work and to modifications of it:
+
+- Keep this license in force for the program and for works based on it.
+- Keep copyright and attribution notices, including this NOTICE, LICENSE,
+  and the notices already present in the source and in README.zh.md,
+  README.en.md, and CHANGELOG.zh.md.
+- Mark modifications with a prominent notice and a date.
+- If you run a modified version on a network server and users interact
+  with it remotely, offer those users the corresponding source of the
+  version they use (GNU AGPL version 3, section 13).
+
+Corresponding source for this fork is the public Git repository above.
